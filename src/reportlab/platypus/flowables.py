@@ -1124,14 +1124,19 @@ class KeepInFrame(_Container,Flowable):
         self.hAlign = hAlign
         self.fakeWidth = fakeWidth
 
+    @property
+    def text(self):
+        return str(self._content)
+
     def _getAvailableWidth(self):
         return self.maxWidth - self._leftExtraIndent - self._rightExtraIndent
 
     def identity(self, maxLen=None):
-        return "<%s at %s%s%s> size=%sx%s" % (self.__class__.__name__, hex(id(self)), self._frameName(),
+        return "<%s at %s%s%s> size=%sx%s containing (%s)" % (self.__class__.__name__, hex(id(self)), self._frameName(),
                 getattr(self,'name','') and (' name="%s"'% getattr(self,'name','')) or '',
                 getattr(self,'maxWidth','') and (' maxWidth=%s'%fp_str(getattr(self,'maxWidth',0))) or '',
-                getattr(self,'maxHeight','')and (' maxHeight=%s' % fp_str(getattr(self,'maxHeight')))or '')
+                getattr(self,'maxHeight','')and (' maxHeight=%s' % fp_str(getattr(self,'maxHeight')))or '',
+                self.text)
 
     def wrap(self,availWidth,availHeight):
         from reportlab.platypus.doctemplate import LayoutError

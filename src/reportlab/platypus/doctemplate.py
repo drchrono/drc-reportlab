@@ -935,9 +935,19 @@ class BaseDocTemplate:
                         flowables[0:0] = S  # put split flowables back on the list
                 else:
                     if hasattr(f,'_postponed'):
-                        ident = "Flowable %s%s too large on page %d in frame %r%s of template %r" % \
-                                (self._fIdent(f,60,frame),_fSizeString(f),self.page, self.frame.id,
-                                        self.frame._aSpaceString(), self.pageTemplate.id)
+                        f_ident = self._fIdent(f, 60, frame)
+                        f_size_string = _fSizeString(f)
+                        page = self.page
+                        frame_id = self.frame.id
+                        a_space_string = self.frame._aSpaceString()
+                        page_template_id = self.pageTemplate.id
+                        ident = "Flowable {!s}{!s} too large on page {} in frame {!r}{!s} of template {!r}".format(
+                            f_ident, 
+                            f_size_string, 
+                            page, 
+                            frame_id,
+                            a_space_string, 
+                            page_template_id)
                         #leave to keep apart from the raise
                         raise LayoutError(ident)
                     # this ought to be cleared when they are finally drawn!
