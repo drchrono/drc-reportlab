@@ -1186,9 +1186,10 @@ class KeepInFrame(_Container,Flowable):
                 #the standard case W should be OK, H is short we want
                 #to find the smallest s with H<=maxHeight
                 H1 = H
-                for f in range(0, 0.95, 0.05):
+                for f in range(0, 95, 5):
+                    f1 = f/100.0
                     #apply the quadratic model
-                    s = _qsolve(maxHeight*(1-f),_hmodel(s0,s1,H0,H1))
+                    s = _qsolve(maxHeight*(1-f1),_hmodel(s0,s1,H0,H1))
                     W, H = func(s)
                     if H<=maxHeight+_FUZZ and W<=maxWidth+_FUZZ:
                         self.width = W-_FUZZ
