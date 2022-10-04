@@ -1186,7 +1186,7 @@ class KeepInFrame(_Container,Flowable):
                 #the standard case W should be OK, H is short we want
                 #to find the smallest s with H<=maxHeight
                 H1 = H
-                for f in 0, 0.01, 0.05, 0.10, 0.15:
+                for f in range(0, 0.95, 0.05):
                     #apply the quadratic model
                     s = _qsolve(maxHeight*(1-f),_hmodel(s0,s1,H0,H1))
                     W, H = func(s)
@@ -1195,6 +1195,15 @@ class KeepInFrame(_Container,Flowable):
                         self.height = H-_FUZZ
                         self._scale = s
                         break
+                else:
+                    self.width = W-_FUZZ
+                    self.height = H-_FUZZ
+                    self._scale = s
+
+        if self.height>maxHeight+_FUZZ or self.width>maxWidth+_FUZZ:
+            ident = 'content %sx%s too large for %s' % (self.width,self.height,self.identity(30))
+            #leave to keep apart from the raise
+            raise LayoutError(ident)
 
         return self.width, self.height
 
