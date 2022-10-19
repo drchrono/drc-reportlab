@@ -949,7 +949,7 @@ class BaseDocTemplate:
                             a_space_string, 
                             page_template_id)
                         #leave to keep apart from the raise
-                        #raise LayoutError(ident)
+                        raise LayoutError(ident)
                     # this ought to be cleared when they are finally drawn!
                     f._postponed = 1
                     mbe = getattr(self,'_multiBuildEdits',None)
