@@ -1191,9 +1191,9 @@ class KeepInFrame(_Container,Flowable):
                     #apply the quadratic model
                     s = _qsolve(maxHeight*(1-f1),_hmodel(s0,s1,H0,H1))
                     W, H = func(s)
-                    if H<=(maxHeight+_FUZZ)*0.95 and (W<=maxWidth+_FUZZ)*0.95:
-                        self.width = W-_FUZZ
-                        self.height = H-_FUZZ
+                    if H<=(maxHeight+_FUZZ) and (W<=maxWidth+_FUZZ):
+                        self.width = (W-_FUZZ)*0.9
+                        self.height = (H-_FUZZ)*0.9
                         self._scale = s
                         break
                 else:
