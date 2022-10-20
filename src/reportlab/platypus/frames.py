@@ -178,7 +178,7 @@ class Frame:
             h += s
             y -= h
 
-            if False:# y < p-_FUZZ:
+            if y < p-_FUZZ:
                 if not rl_config.allowTableBoundsErrors and ((h>self._aH or w>aW) and not trySplit):
                     from reportlab.platypus.doctemplate import LayoutError
                     raise LayoutError("Flowable %s (%sx%s points) too large for frame (%sx%s points)." % (

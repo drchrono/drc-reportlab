@@ -1183,7 +1183,7 @@ class KeepInFrame(_Container,Flowable):
             self.height = H-_FUZZ
             self._scale = s1
             #if H<min(0.95*maxHeight,maxHeight-10) or H>=maxHeight+_FUZZ:
-            drcMaxHeight = (maxHeight+_FUZZ)*0.9
+            drcMaxHeight = (maxHeight+_FUZZ)*0.97
             if H >= drcMaxHeight:
                 #the standard case W should be OK, H is short we want
                 #to find the smallest s with H<=maxHeight
