@@ -1,0 +1,21 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: drc-reportlab
+  description: Local fork of ReportLab 3.5.32
+  annotations:
+    business-unit: EverHealth
+    github.com/project-slug: drchrono/drc-reportlab
+    product: DRC
+spec:
+  type: service
+  lifecycle: production
+  owner: EverHealth
+  implementation:
+    languages:
+    - Python
+    - C
+    - Java
+    - M4
+    - Makefile
+    - Shell
